@@ -1,14 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.scss";
 
 import Layout from "./components/Layout/Layout";
+import BurguerBuilder from "./containers/BurguerBuilder/BurguerBuilder"  
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <p>Test</p>
+        <p>Layout</p>
+        <BurguerBuilder></BurguerBuilder>
       </Layout>
     </div>
   );
