@@ -6,12 +6,7 @@ import BurguerBuilder from "./containers/BurguerBuilder/BurguerBuilder"
 
 function App() {
   return (
-    <div className="App">
-      <Layout>
-        <p>Layout</p>
-        <BurguerBuilder></BurguerBuilder>
-      </Layout>
-    </div>
+      <Layout></Layout>
   );
 }
 

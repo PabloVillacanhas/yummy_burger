@@ -1,11 +1,11 @@
-div.layout{
+.layout{
     border: 1px solid black;
 
-    & > div{
-        border: 1px solid black;
+    .toolbar{
+        height: 5vh;
     }
 
     main{
-        border: 1px solid black;
+        height: 95vh;
     }
 }

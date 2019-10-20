@@ -1,24 +1,25 @@
-.Burguer{
-    width: 600px;
+$small: 300px;
+$medium: 900px;
+
+.burguer{
     margin: auto;
-    height: 250px;
-    overflow: scroll;
     text-align: center;
     font-weight: bold;
     font-size: 1.2em;
 
-    @media (min-width: 500px) and (min-height: 400px){
-        width: 350px;
-        height: 300px;
-    }
 
-    @media (min-width: 500px) and (min-height: 401px){
-        width: 450px;
-        height: 400px;
-    }
+  @media screen and (max-width: $small) {
+    width: 150px;
+    height: 200px;
+  }
 
-    @media (min-width: 100px) and (min-height: 700px){
-        width: 700px;
-        height: 600px;
-    }
+  @media screen and (max-width: $medium){
+    width: 300px;
+    height: 350px;
+  }
+
+  @media screen and (min-width: $medium) {
+     width: 450px;
+     height: 550px;
+  }
 }

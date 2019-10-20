@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 
 import Burguer from '../../components/Burguer/Burguer'
 
+import "./BurguerBuilder.scss"
+
 export default class BurguerBuilder extends Component {
   render() {
     return (
-        <div>   
-            <Burguer></Burguer>
-            <div>Burguer Cockpit</div>
-        </div>
+      <React.Fragment>
+        <Burguer></Burguer>
+        <p>Cokpit builder</p>
+      </React.Fragment>
     );
   }
 }

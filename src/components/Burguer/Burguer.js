@@ -4,7 +4,7 @@ import './Burguer.scss'
 import Ingredient from './Ingredient/Ingredient'
 
 const Burguer = props => (
-    <div className="Burguer">
+    <div className="burguer">
         <Ingredient type="bread-top"></Ingredient>
         <Ingredient type="cheese"></Ingredient>
         <Ingredient type="bacon"></Ingredient>
