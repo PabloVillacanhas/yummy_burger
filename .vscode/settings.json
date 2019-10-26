@@ -1,0 +1,11 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "prettier.singleQuote": true,
+    "prettier.useTabs": true,
+    "prettier.jsxSingleQuote": true,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 2,
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true
+}

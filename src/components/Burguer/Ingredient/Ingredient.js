@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import "./Ingredient.scss"
 
 const Ingredient = props => {
-    let ingredient = null;    
+    let ingredient = null;
     switch (props.type) {
         case ('bread-bottom'):
             ingredient = <div className="breadBottom"></div>
@@ -23,14 +23,14 @@ const Ingredient = props => {
             ingredient = <div className="cheese"></div>
             break;
         case ('bacon'):
-            ingredient = <div className="meat"></div>
+            ingredient = <div className="bacon"></div>
             break;
         case ('salad'):
             ingredient = <div className="salad"></div>
             break;
         default:
             ingredient = null;
-    }    
+    }
     return ingredient;
 }
 
