@@ -1,7 +1,7 @@
 import React from 'react'
 
 import "./IngredientControl/IngredientControl"
-import "./BurguerCockpit.scss"
+import "./BurgerCockpit.scss"
 import IngredientControl from './IngredientControl/IngredientControl'
 
 const controls = [
@@ -11,9 +11,9 @@ const controls = [
 	{ label: 'Meat', type: "meat" }
 ]
 
-const BurguerCockpit = (props) => {
+const BurgerCockpit = (props) => {
 	return (
-		<div className="burguerCockpit">
+		<div className="burgerCockpit">
 			<div className="ingredients">
 				{
 					controls.map(ctrl => (
@@ -31,4 +31,4 @@ const BurguerCockpit = (props) => {
 	)
 }
 
-export default BurguerCockpit
+export default BurgerCockpit

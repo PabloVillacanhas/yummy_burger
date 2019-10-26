@@ -1,9 +1,9 @@
 import React from 'react'
 
-import './Burguer.scss'
+import './Burger.scss'
 import Ingredient from './Ingredient/Ingredient'
 
-const Burguer = props => {
+const Burger = props => {
 
     let ingredients = Object.keys(props.ingredients)
         .map(igKey => {
@@ -20,7 +20,7 @@ const Burguer = props => {
     }
 
     return (
-        <div className="burguer">
+        <div className="burger">
             <Ingredient type="bread-top"></Ingredient>
             {ingredients}
             <Ingredient type="bread-bottom"></Ingredient>
@@ -28,8 +28,8 @@ const Burguer = props => {
     )
 };
 
-Burguer.propTypes = {
+Burger.propTypes = {
 
 }
 
-export default Burguer
+export default Burger

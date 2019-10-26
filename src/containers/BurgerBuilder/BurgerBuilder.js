@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import Burguer from '../../components/Burguer/Burguer'
+import Burger from '../../components/Burger/Burger'
 
-import "./BurguerBuilder.scss"
-import "../../components/BurgerCockpit/BurguerCockpit"
-import BurguerCockpit from '../../components/BurgerCockpit/BurguerCockpit';
+import "./BurgerBuilder.scss"
+import "../../components/BurgerCockpit/BurgerCockpit"
+import BurguerCockpit from '../../components/BurgerCockpit/BurgerCockpit';
 
 const BurguerBuilder = (props) => {
 
@@ -45,7 +45,7 @@ const BurguerBuilder = (props) => {
 
   return (
     <React.Fragment>
-      <Burguer ingredients={ingredients}></Burguer>
+      <Burger ingredients={ingredients}></Burger>
       <BurguerCockpit
         onAddIngredient={addIngredientHandler}
         onRemoveIngredient={removeIngredientHandler}

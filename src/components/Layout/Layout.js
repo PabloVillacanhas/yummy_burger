@@ -1,15 +1,15 @@
 import React from "react";
 
 import "./Layout.scss"
-import BurguerBuilder from "../../containers/BurguerBuilder/BurguerBuilder";
+import BurgerBuilder from "../../containers/BurgerBuilder/BurgerBuilder";
 
 const Layout = props => {
   return (
     <div className="layout">
-        <div className="toolbar">Toolbar, SideDrawer, Backdrop</div>
-        <main>
-          <BurguerBuilder></BurguerBuilder>
-        </main>
+      <div className="toolbar">Toolbar, SideDrawer, Backdrop</div>
+      <main>
+        <BurgerBuilder></BurgerBuilder>
+      </main>
     </div>
   );
 };
