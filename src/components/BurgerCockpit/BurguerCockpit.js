@@ -11,14 +11,22 @@ const controls = [
 	{ label: 'Meat', type: "meat" }
 ]
 
-const BurguerCockpit = () => {
+const BurguerCockpit = (props) => {
 	return (
 		<div className="burguerCockpit">
-			{
-				controls.map(ctrl => (
-					<IngredientControl key={ctrl.key} label={ctrl.label} />
-				))
-			}
+			<div className="ingredients">
+				{
+					controls.map(ctrl => (
+						<IngredientControl
+							onAdd={() => props.onAddIngredient(ctrl.type)}
+							onRemove={() => props.onRemoveIngredient(ctrl.type)}
+							key={ctrl.type} label={ctrl.label} />
+					))
+				}
+			</div>
+			<div className="totalPrice">
+				Total : {props.totalPrice} €
+			</div>
 		</div>
 	)
 }

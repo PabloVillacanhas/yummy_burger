@@ -16,7 +16,7 @@ const Burguer = props => {
         }, []);
 
     if (ingredients.length === 0) {
-        ingredients = <p>Start puttin into ingredients!</p>
+        ingredients = <p>Start putting into ingredients!</p>
     }
 
     return (

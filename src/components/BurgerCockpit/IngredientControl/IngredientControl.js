@@ -6,8 +6,8 @@ const IngredientControl = (props) => {
 	return (
 		<div className="ingredientControl">
 			<label className="label">{props.label}</label>
-			<button className="more">More</button>
-			<button className="less">Less</button>
+			<button className="more" onClick={props.onAdd}>More</button>
+			<button className="less" onClick={props.onRemove}>Less</button>
 		</div>
 	)
 }

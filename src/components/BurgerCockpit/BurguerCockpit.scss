@@ -2,9 +2,21 @@
 	width: 100%;
 	background-color: #cf8f2e;
 	display: flex;
-	flex-flow: column;
-	align-items: center;
+	flex-flow: row;
+	justify-content: center;
 	box-shadow: #ccc;
 	margin: auto;
 	padding: 10px 0;
+
+	.ingredients {
+		display: flex;
+		flex-flow: column;
+	}
+
+	.totalPrice {
+		align-self: center;
+		justify-content: flex-end;
+		font-size: 3em;
+		margin: 5px;
+	}
 }
