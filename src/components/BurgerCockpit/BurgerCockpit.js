@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, ReactDOM } from 'react'
-
-import "./IngredientControl/IngredientControl"
 import "./BurgerCockpit.scss"
+
+import React, { ReactDOM, useEffect, useRef } from 'react'
+
 import IngredientControl from './IngredientControl/IngredientControl'
 
 const controls = [

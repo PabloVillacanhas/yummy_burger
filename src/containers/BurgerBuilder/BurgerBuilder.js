@@ -1,10 +1,10 @@
+import "./BurgerBuilder.scss"
+
 import React, { useState } from 'react';
 
-import Burger from '../../components/Burger/Burger'
-
-import "./BurgerBuilder.scss"
-import "../../components/BurgerCockpit/BurgerCockpit"
-import BurguerCockpit from '../../components/BurgerCockpit/BurgerCockpit';
+import Burger from 'components/Burger/Burger'
+import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
+import Modal from 'components/UI/Modals/Modal'
 
 const BurguerBuilder = (props) => {
 
@@ -44,6 +44,7 @@ const BurguerBuilder = (props) => {
 
   return (
     <React.Fragment>
+      <Modal />
       <Burger ingredients={ingredients}></Burger>
       <BurguerCockpit
         ingredients={ingredients}
