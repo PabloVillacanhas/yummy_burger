@@ -7,7 +7,7 @@ const OrderSummary = props => {
 
 	const getItems = (ingredients) => {
 		return ingredients.map((value, idx) => {
-			return (<li key={value + idx}>{value + props.ingredients[value]}</li>);
+			return (<li key={value + idx}>{value + ": " + props.ingredients[value]}</li>);
 		});
 	}
 

@@ -3,7 +3,7 @@ import React from 'react'
 const Modal = React.forwardRef((props, ref) => {
 
 	const hideElement = () => {
-		document.getElementById("modal").style.top = "-30%";
+		document.getElementById("modal").style.left = "-45%";
 	}
 
 	return (
