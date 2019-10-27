@@ -18,9 +18,10 @@ const BurgerCockpit = (props) => {
 				{
 					controls.map(ctrl => (
 						<IngredientControl
+							ingredients={props.ingredients}
 							onAdd={() => props.onAddIngredient(ctrl.type)}
 							onRemove={() => props.onRemoveIngredient(ctrl.type)}
-							key={ctrl.type} label={ctrl.label} />
+							key={ctrl.type} label={ctrl.label} type={ctrl.type} />
 					))
 				}
 			</div>

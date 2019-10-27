@@ -7,7 +7,7 @@ const IngredientControl = (props) => {
 		<div className="ingredientControl">
 			<label className="label">{props.label}</label>
 			<button className="more" onClick={props.onAdd}>More</button>
-			<button className="less" onClick={props.onRemove}>Less</button>
+			<button className="less" disabled={props.ingredients[props.type] === 0} onClick={props.onRemove}>Less</button>
 		</div>
 	)
 }

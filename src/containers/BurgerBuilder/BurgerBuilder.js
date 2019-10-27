@@ -27,7 +27,6 @@ const BurguerBuilder = (props) => {
   );
 
   const addIngredientHandler = (type) => {
-    console.log("more");
     if (ingredients.hasOwnProperty(type)) {
       ingredients[type] += 1;
       setIngredients(ingredients);
@@ -36,7 +35,7 @@ const BurguerBuilder = (props) => {
   }
 
   const removeIngredientHandler = (type) => {
-    if (ingredients.hasOwnProperty(type) && ingredients[type] > 0) {
+    if (ingredients.hasOwnProperty(type)) {
       ingredients[type] -= 1;
       setIngredients(ingredients)
       setTotal((Number(total) - Number(INGREDIENT_PRICES[type])).toFixed(2));
@@ -47,6 +46,7 @@ const BurguerBuilder = (props) => {
     <React.Fragment>
       <Burger ingredients={ingredients}></Burger>
       <BurguerCockpit
+        ingredients={ingredients}
         onAddIngredient={addIngredientHandler}
         onRemoveIngredient={removeIngredientHandler}
         totalPrice={total}>
