@@ -1,19 +1,23 @@
 import "./BurgerBuilder.scss"
+import "components/UI/Modals/Modal.scss"
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import Burger from 'components/Burger/Burger'
 import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
 import Modal from 'components/UI/Modals/Modal'
+import OrderSummary from "components/OrderSummary/OrderSummary";
+
+const INGREDIENT_PRICES = {
+  salad: 0.5,
+  cheese: 0.4,
+  meat: 1.3,
+  bacon: 0.7
+}
 
 const BurguerBuilder = (props) => {
 
-  const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
-  }
+  const modal = useRef(null)
 
   const [total, setTotal] = useState(0);
 
@@ -25,6 +29,13 @@ const BurguerBuilder = (props) => {
       salad: 0
     }
   );
+
+  const onCheckoutHandler = () => {
+    console.log("aldjnasld");
+    console.log(modal.current);
+    modal.current.style.top = "30%"
+    modal.current.style.left = "30%"
+  }
 
   const addIngredientHandler = (type) => {
     if (ingredients.hasOwnProperty(type)) {
@@ -44,13 +55,16 @@ const BurguerBuilder = (props) => {
 
   return (
     <React.Fragment>
-      <Modal />
+      <Modal ref={modal} className="modal">
+        <OrderSummary ingredients={ingredients}></OrderSummary>
+      </Modal>
       <Burger ingredients={ingredients}></Burger>
       <BurguerCockpit
         ingredients={ingredients}
         onAddIngredient={addIngredientHandler}
         onRemoveIngredient={removeIngredientHandler}
-        totalPrice={total}>
+        totalPrice={total}
+        onCheckout={() => onCheckoutHandler()}>
       </BurguerCockpit>
     </React.Fragment>
   );

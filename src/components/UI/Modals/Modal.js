@@ -1,16 +1,18 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
-const Modal = props => {
+const Modal = React.forwardRef((props, ref) => {
+
+	const hideElement = () => {
+		document.getElementById("modal").style.top = "-30%";
+	}
+
 	return (
-		<div className="modal">
+		<div id="modal" ref={ref} className="modal">
+			<div className="modalBody"></div>
 			{props.children}
+			<div onClick={hideElement} className="closeButton">[X]</div>
 		</div>
 	)
-}
-
-Modal.propTypes = {
-
-}
+});
 
 export default Modal

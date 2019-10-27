@@ -1,6 +1,6 @@
 import "./BurgerCockpit.scss"
 
-import React, { ReactDOM, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import IngredientControl from './IngredientControl/IngredientControl'
 
@@ -37,7 +37,7 @@ const BurgerCockpit = (props) => {
 				Total : {props.totalPrice} €
 			</div>
 			<div className="orderPanel">
-				<button ref={orderButton} className="orderButton">Order now!</button>
+				<button ref={orderButton} onClick={props.onCheckout} className="orderButton">Order now!</button>
 			</div>
 		</div>
 	)
