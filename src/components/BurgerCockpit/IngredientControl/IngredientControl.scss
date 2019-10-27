@@ -21,13 +21,6 @@
 		cursor: pointer;
 		outline: none;
 
-		&:disabled {
-			background-color: #ac9980;
-			border: 1px solid #7e7365;
-			color: #ccc;
-			cursor: default;
-		}
-
 		&:hover:disabled {
 			background-color: #ac9980;
 			color: #ccc;
@@ -38,21 +31,23 @@
 			background-color: #d39952;
 			color: white;
 
-			&:hover,
-			&:active {
-				background-color: #daa972;
-				color: white;
+			&:disabled {
+				background-color: #ac9980;
+				border: 1px solid #7e7365;
+				color: #ccc;
+				cursor: default;
 			}
 		}
+
 		&.more {
 			background-color: #8f5e1e;
 			color: white;
+		}
 
-			&:hover,
-			&:active {
-				background-color: #daa972;
-				color: white;
-			}
+		&:hover,
+		&:active {
+			background-color: #daa972;
+			color: white;
 		}
 	}
 }
