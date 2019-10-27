@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, ReactDOM } from 'react'
 
 import "./IngredientControl/IngredientControl"
 import "./BurgerCockpit.scss"
@@ -12,6 +12,14 @@ const controls = [
 ]
 
 const BurgerCockpit = (props) => {
+
+	const orderButton = useRef(null)
+
+	useEffect(() => {
+		let disabled = props.totalPrice <= 0.00
+		disabled ? orderButton.current.setAttribute("disabled", true) : orderButton.current.removeAttribute("disabled");
+	}, [props.totalPrice])
+
 	return (
 		<div className="burgerCockpit">
 			<div className="ingredients">
@@ -27,6 +35,9 @@ const BurgerCockpit = (props) => {
 			</div>
 			<div className="totalPrice">
 				Total : {props.totalPrice} €
+			</div>
+			<div className="orderPanel">
+				<button ref={orderButton} className="orderButton">Order now!</button>
 			</div>
 		</div>
 	)
