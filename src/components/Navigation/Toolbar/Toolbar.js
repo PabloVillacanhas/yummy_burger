@@ -6,7 +6,11 @@ import React from 'react'
 
 const Toolbar = props => (
 	<header className="toolbar">
-		<div onClick={props.toggle} className={"toggle"}>MENU</div>
+		<div onClick={props.toggle} className={"toggle"}>
+			<div className="line"></div>
+			<div className="line"></div>
+			<div className="line"></div>
+		</div>
 		<Logo></Logo>
 		<nav>
 			<NavigationItems></NavigationItems>
