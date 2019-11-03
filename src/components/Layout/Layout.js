@@ -17,7 +17,7 @@ const Layout = props => {
   return (
     <div className="layout">
       <SideDrawer click={toggleSidebarHandler} show={showSidebar}></SideDrawer>
-      <Toolbar />
+      <Toolbar toggle={toggleSidebarHandler} />
       <main>
         <BurgerBuilder></BurgerBuilder>
       </main>
