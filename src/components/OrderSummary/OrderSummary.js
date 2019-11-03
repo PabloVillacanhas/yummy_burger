@@ -20,6 +20,7 @@ const OrderSummary = props => {
 					getItems(ingredientsSummary)
 				}
 			</ul>
+			<p><strong>Total price: {props.totalPrice}</strong></p>
 			<p>Continue to checkout</p>
 		</div>
 	)

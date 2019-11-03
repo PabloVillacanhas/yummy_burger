@@ -56,7 +56,7 @@ const BurguerBuilder = (props) => {
   return (
     <React.Fragment>
       <Modal ref={modal} className="modal">
-        <OrderSummary ingredients={ingredients}></OrderSummary>
+        <OrderSummary totalPrice={total} ingredients={ingredients}></OrderSummary>
       </Modal>
       <Burger ingredients={ingredients}></Burger>
       <BurguerCockpit

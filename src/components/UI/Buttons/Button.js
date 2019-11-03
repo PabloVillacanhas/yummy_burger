@@ -5,7 +5,7 @@ import React from 'react'
 const Button = (props) => {
 	return (
 		<button className={"button " + [...props.classes].join(' ')}>
-			Continue to checkout
+			Continue to checkout!
 		</button>
 	)
 }
