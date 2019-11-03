@@ -1,5 +1,6 @@
 import "./Toolbar.scss"
 
+import Logo from 'components/Logo/Logo'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -7,7 +8,7 @@ const Toolbar = props => {
 	return (
 		<header className="toolbar">
 			<div>MENU</div>
-			<div>LOGO</div>
+			<Logo></Logo>
 			<nav>
 				<ul>
 					<li>Item 1</li>
