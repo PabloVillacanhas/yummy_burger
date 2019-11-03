@@ -2,7 +2,7 @@ import "./Layout.scss"
 
 import BurgerBuilder from "containers/BurgerBuilder/BurgerBuilder";
 import React from "react";
-import Toolbar from "components/Navigation/Toolbal/Toolbar";
+import Toolbar from "components/Navigation/Toolbar/Toolbar";
 
 const Layout = props => {
   return (
