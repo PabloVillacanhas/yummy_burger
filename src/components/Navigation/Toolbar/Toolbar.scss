@@ -22,6 +22,10 @@
 		width: fit-content;
 		align-self: center;
 
+		@media (min-width: 768px) {
+			display: none;
+		}
+
 		.line {
 			margin: 6px;
 			width: 35px;
