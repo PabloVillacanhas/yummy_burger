@@ -8,7 +8,7 @@ import Toolbar from "components/Navigation/Toolbar/Toolbar";
 
 const Layout = props => {
 
-  const [showSidebar, setShowSidebar] = useState(true)
+  const [showSidebar, setShowSidebar] = useState(false)
 
   const toggleSidebarHandler = () => {
     setShowSidebar(!showSidebar);

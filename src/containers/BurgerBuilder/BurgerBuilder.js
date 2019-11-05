@@ -31,10 +31,9 @@ const BurguerBuilder = (props) => {
   );
 
   const onCheckoutHandler = () => {
-    console.log("aldjnasld");
-    console.log(modal.current);
-    modal.current.style.top = "30%"
-    modal.current.style.left = "30%"
+    let modalWidth = modal.current.offsetWidth;
+    let windowWidth = window.screen.availWidth;
+    modal.current.style.left = windowWidth / 2 - modalWidth / 2 + "px"
   }
 
   const addIngredientHandler = (type) => {

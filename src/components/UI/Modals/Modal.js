@@ -4,7 +4,8 @@ import React from 'react'
 const Modal = React.forwardRef((props, ref) => {
 
 	const hideElement = () => {
-		document.getElementById("modal").style.left = "-45%";
+		let modalWidth = document.getElementById("modal").offsetWidth;
+		document.getElementById("modal").style.left = -modalWidth - 2 + "px";
 	}
 
 	return (
