@@ -7,6 +7,7 @@ import Burger from 'components/Burger/Burger'
 import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
 import Modal from 'components/UI/Modals/Modal'
 import OrderSummary from "components/OrderSummary/OrderSummary";
+import BurgerAPI from 'http/api/'
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -52,9 +53,28 @@ const BurguerBuilder = (props) => {
     }
   }
 
+  const onContinuePurchase = async () => {
+    const order = {
+      ingredients: ingredients,
+      price: total,
+      customer: {
+        name: 'Pablo',
+        address: {
+          street: 'Teststreet 1',
+          zipCode: '12312',
+          country: 'Germany'
+        },
+        email: 'test@test.com'
+      }
+    }
+    await BurgerAPI.post(order);
+    console.log("posted");
+
+  }
+
   return (
     <React.Fragment>
-      <Modal ref={modal} className="modal">
+      <Modal purchase={onContinuePurchase} ref={modal} className="modal">
         <OrderSummary totalPrice={total} ingredients={ingredients}></OrderSummary>
       </Modal>
       <Burger ingredients={ingredients}></Burger>

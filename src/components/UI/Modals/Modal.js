@@ -14,7 +14,7 @@ const Modal = React.forwardRef((props, ref) => {
 				{props.children}
 			</div>
 			<div>
-				<Button classes={["btn-continue"]} ></Button>
+				<Button purchase={props.purchase} classes={["btn-continue"]} ></Button>
 			</div>
 			<div onClick={hideElement} className="closeButton">[X]</div>
 		</div>
