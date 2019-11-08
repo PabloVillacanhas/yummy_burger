@@ -4,10 +4,10 @@ import "components/UI/Modals/Modal.scss"
 import React, { useRef, useState } from 'react';
 
 import Burger from 'components/Burger/Burger'
+import BurgerAPI from 'http/api/'
 import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
 import Modal from 'components/UI/Modals/Modal'
 import OrderSummary from "components/OrderSummary/OrderSummary";
-import BurgerAPI from 'http/api/'
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -20,7 +20,7 @@ const BurguerBuilder = (props) => {
 
   const modal = useRef(null)
 
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(0.00);
 
   const [ingredients, setIngredients] = useState(
     {
@@ -53,6 +53,16 @@ const BurguerBuilder = (props) => {
     }
   }
 
+  const resetOrder = () => {
+    setIngredients({
+      cheese: 0,
+      meat: 0,
+      bacon: 0,
+      salad: 0
+    })
+    setTotal(0.00)
+  }
+
   const onContinuePurchase = async () => {
     const order = {
       ingredients: ingredients,
@@ -68,8 +78,7 @@ const BurguerBuilder = (props) => {
       }
     }
     await BurgerAPI.post(order);
-    console.log("posted");
-
+    resetOrder();
   }
 
   return (
