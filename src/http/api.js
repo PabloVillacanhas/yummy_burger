@@ -1,4 +1,5 @@
 const order_endpoint = "https://yummy-burger.firebaseio.com/orders.json";
+const ingredients_endpoint = "https://yummy-burger.firebaseio.com/ingredients.json";
 
 class BurgerAPI {
 
@@ -17,6 +18,16 @@ class BurgerAPI {
 			.then(response => {
 				return response;
 			})
+	}
+
+	static async getIngredients() {
+		const ingredients = await fetch(ingredients_endpoint)
+			.then(res => res.json()
+				.then(data => {
+					return data
+				}))
+		console.log(ingredients);
+		return ingredients;
 	}
 }
 

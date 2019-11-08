@@ -1,7 +1,7 @@
 import "./BurgerBuilder.scss"
 import "components/UI/Modals/Modal.scss"
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Burger from 'components/Burger/Burger'
 import BurgerAPI from 'http/api/'
@@ -22,14 +22,13 @@ const BurguerBuilder = (props) => {
 
   const [total, setTotal] = useState(0.00);
 
-  const [ingredients, setIngredients] = useState(
-    {
-      cheese: 0,
-      meat: 0,
-      bacon: 0,
-      salad: 0
-    }
-  );
+  const [ingredients, setIngredients] = useState({});
+
+  useEffect(() => {
+    BurgerAPI.getIngredients().then(
+      data => setIngredients(data)
+    )
+  }, [])
 
   const onCheckoutHandler = () => {
     let modalWidth = modal.current.offsetWidth;
