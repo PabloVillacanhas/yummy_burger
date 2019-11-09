@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Burger from 'components/Burger/Burger'
 import BurgerAPI from 'http/api/'
 import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
+import Load from 'components/UI/Load/Load'
 import Modal from 'components/UI/Modals/Modal'
 import OrderSummary from "components/OrderSummary/OrderSummary";
 
@@ -24,16 +25,24 @@ const BurguerBuilder = (props) => {
 
   const [ingredients, setIngredients] = useState({});
 
+  const [loading, setloading] = useState(false)
+
+  //After each render fetch ingredients
   useEffect(() => {
     BurgerAPI.getIngredients().then(
       data => setIngredients(data)
     )
   }, [])
 
-  const onCheckoutHandler = () => {
-    let modalWidth = modal.current.offsetWidth;
-    let windowWidth = window.screen.availWidth;
-    modal.current.style.left = windowWidth / 2 - modalWidth / 2 + "px"
+  const toggleShowModal = () => {
+    if (document.getElementById("modal").classList.contains("hide")) {
+      document.getElementById("modal").classList.remove("hide")
+      document.getElementById("modal").classList.add("show")
+    }
+    else {
+      document.getElementById("modal").classList.remove("show")
+      document.getElementById("modal").classList.add("hide")
+    }
   }
 
   const addIngredientHandler = (type) => {
@@ -52,17 +61,8 @@ const BurguerBuilder = (props) => {
     }
   }
 
-  const resetOrder = () => {
-    setIngredients({
-      cheese: 0,
-      meat: 0,
-      bacon: 0,
-      salad: 0
-    })
-    setTotal(0.00)
-  }
-
-  const onContinuePurchase = async () => {
+  const onPurchase = () => {
+    setloading(true)
     const order = {
       ingredients: ingredients,
       price: total,
@@ -76,14 +76,20 @@ const BurguerBuilder = (props) => {
         email: 'test@test.com'
       }
     }
-    await BurgerAPI.post(order);
-    resetOrder();
+    BurgerAPI.post(order).then(res => {
+      setloading(false);
+      toggleShowModal();
+    }
+    );
   }
 
   return (
     <React.Fragment>
-      <Modal purchase={onContinuePurchase} ref={modal} className="modal">
-        <OrderSummary totalPrice={total} ingredients={ingredients}></OrderSummary>
+      <Modal purchase={onPurchase} ref={modal} className="modal">
+        {loading ?
+          <Load></Load> :
+          <OrderSummary totalPrice={total} ingredients={ingredients}></OrderSummary>
+        }
       </Modal>
       <Burger ingredients={ingredients}></Burger>
       <BurguerCockpit
@@ -91,7 +97,7 @@ const BurguerBuilder = (props) => {
         onAddIngredient={addIngredientHandler}
         onRemoveIngredient={removeIngredientHandler}
         totalPrice={total}
-        onCheckout={() => onCheckoutHandler()}>
+        onCheckout={toggleShowModal}>
       </BurguerCockpit>
     </React.Fragment>
   );

@@ -1,4 +1,4 @@
-const order_endpoint = "https://yummy-burger.firebaseio.com/orders.json";
+const order_endpoint = "https://yummy-burger.firebaseio.com/ordrs.json";
 const ingredients_endpoint = "https://yummy-burger.firebaseio.com/ingredients.json";
 
 class BurgerAPI {
@@ -10,24 +10,22 @@ class BurgerAPI {
 		return response;
 	}
 
-	static post(order) {
-		fetch(order_endpoint, {
+	static async post(order) {
+		await fetch(order_endpoint, {
 			method: "POST",
 			body: JSON.stringify(order)
-		}).then(BurgerAPI.handleErrors)
-			.then(response => {
-				return response;
-			})
+		}).then(response => this.handleErrors(response).json()
+			.then(data => console.log(data)));
+		return
 	}
 
 	static async getIngredients() {
-		const ingredients = await fetch(ingredients_endpoint)
+		let ing = await fetch(ingredients_endpoint)
 			.then(res => res.json()
 				.then(data => {
 					return data
 				}))
-		console.log(ingredients);
-		return ingredients;
+		return ing
 	}
 }
 

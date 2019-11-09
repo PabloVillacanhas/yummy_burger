@@ -13,6 +13,15 @@ $modalWidth: 70%;
 	transition: all 0.3s ease-out;
 	margin: 0 auto;
 
+	&.show {
+		left: 0;
+		right: 0;
+	}
+
+	&.hide {
+		left: unquote('calc(#{-$modalWidth} - 2px)');
+	}
+
 	.closeButton {
 		position: absolute;
 		right: 10px;
