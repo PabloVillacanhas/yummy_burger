@@ -6,8 +6,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import Burger from 'components/Burger/Burger'
 import BurgerAPI from 'http/api/'
 import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
+import Checkout from 'containers/Checkout/Checkout'
 import Error from 'components/UI/Error/Error'
 import Load from 'components/UI/Load/Load'
+import Logo from "components/Logo/Logo";
 import Modal from 'components/UI/Modals/Modal'
 import OrderSummary from "components/OrderSummary/OrderSummary";
 import Success from 'components/UI/Success/Success'
@@ -22,11 +24,9 @@ const INGREDIENT_PRICES = {
 const BurguerBuilder = (props) => {
 
   const modal = useRef(null)
-
+  const [msg, setMsg] = useState("")
   const [total, setTotal] = useState(0.00);
-
   const [ingredients, setIngredients] = useState({});
-
   const [requestStatus, setRequestStatus] = useState("none") //none, pending, success
 
   //After each render fetch ingredients
@@ -63,7 +63,7 @@ const BurguerBuilder = (props) => {
     }
   }
 
-  const onPurchase = () => {
+  const onPurchase = async () => {
     setRequestStatus("pending")
     const order = {
       ingredients: ingredients,
@@ -78,7 +78,7 @@ const BurguerBuilder = (props) => {
         email: 'test@test.com'
       }
     }
-    BurgerAPI.post(order).then(res => {
+    await BurgerAPI.post(order).then(res => {
       setRequestStatus("success");
       setTimeout(
         () => {
@@ -96,12 +96,13 @@ const BurguerBuilder = (props) => {
         }, 2000)
     }
     ).catch(res => {
-      setRequestStatus("error", res)
+      setMsg(res.message)
+      setRequestStatus("error")
     }
     );
   }
 
-  const changeState = (requestStatus, msg) => {
+  const changeState = (requestStatus) => {
     switch (requestStatus) {
       case 'none':
         console.log("none");
@@ -113,7 +114,6 @@ const BurguerBuilder = (props) => {
         console.log("success");
         return <Success />;
       case 'error':
-        console.log(msg + " TODO");
         return <Error error={msg}></Error>
       default:
         return null;
@@ -122,7 +122,7 @@ const BurguerBuilder = (props) => {
 
   return (
     <React.Fragment>
-      <Modal toggle={toggleShowModal} ref={modal} className="modal">
+      <Modal purchase={onPurchase} toggle={toggleShowModal} ref={modal} className="modal">
         {
           changeState(requestStatus)
         }
@@ -133,8 +133,10 @@ const BurguerBuilder = (props) => {
         onAddIngredient={addIngredientHandler}
         onRemoveIngredient={removeIngredientHandler}
         totalPrice={total}
-        onCheckout={toggleShowModal}>
-      </BurguerCockpit>
+        onCheckout={toggleShowModal} />
+      <Checkout
+        ingredients={ingredients}
+      />
     </React.Fragment>
   );
 }

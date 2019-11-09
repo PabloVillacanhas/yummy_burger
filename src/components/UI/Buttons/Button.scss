@@ -1,10 +1,21 @@
-.btn-continue {
-	cursor: pointer;
-	background-color: #da9335;
+button {
 	color: white;
 	font-family: sans-serif;
 	font-weight: bold;
-	border: #966909;
 	padding: 15px;
-	box-shadow: 2px 2px 2px #966909;
+	margin: 10px;
+
+	&.btn-continue {
+		background-color: #da9335;
+		border: #966909;
+		box-shadow: 2px 2px 2px #966909;
+		cursor: pointer;
+	}
+
+	&.btn-cancel {
+		background-color: #966909;
+		border: #da9335;
+		box-shadow: 2px 2px 2px #da9335;
+		cursor: pointer;
+	}
 }

@@ -4,12 +4,12 @@ import React from 'react'
 const Modal = React.forwardRef((props, ref) => {
 
 	return (
-		<div id="modal" ref={ref} className="modal show">
+		<div id="modal" ref={ref} className="modal hide">
 			<div className="modalBody">
 				{props.children}
 			</div>
 			<div>
-				<Button purchase={props.purchase} classes={["btn-continue"]} ></Button>
+				<Button purchase={props.purchase} classes={["btn-continue"]} >Continue</Button>
 			</div>
 			<div onClick={props.toggle} className="closeButton">[X]</div>
 		</div>
