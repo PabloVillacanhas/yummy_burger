@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Burger from 'components/Burger/Burger'
 import BurgerAPI from 'http/api/'
 import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
+import Error from 'components/UI/Error/Error'
 import Load from 'components/UI/Load/Load'
 import Modal from 'components/UI/Modals/Modal'
 import OrderSummary from "components/OrderSummary/OrderSummary";
@@ -94,10 +95,13 @@ const BurguerBuilder = (props) => {
           )
         }, 2000)
     }
+    ).catch(res => {
+      setRequestStatus("error", res)
+    }
     );
   }
 
-  const changeState = requestStatus => {
+  const changeState = (requestStatus, msg) => {
     switch (requestStatus) {
       case 'none':
         console.log("none");
@@ -108,6 +112,9 @@ const BurguerBuilder = (props) => {
       case 'success':
         console.log("success");
         return <Success />;
+      case 'error':
+        console.log(msg + " TODO");
+        return <Error error={msg}></Error>
       default:
         return null;
     }
@@ -115,7 +122,7 @@ const BurguerBuilder = (props) => {
 
   return (
     <React.Fragment>
-      <Modal purchase={onPurchase} ref={modal} className="modal">
+      <Modal toggle={toggleShowModal} ref={modal} className="modal">
         {
           changeState(requestStatus)
         }
