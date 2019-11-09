@@ -12,7 +12,7 @@ $modalWidth: 70%;
 	left: unquote('calc(#{-$modalWidth} - 2px)');
 	transition: all 0.3s ease-out;
 	margin: 0 auto;
-
+	min-height: fit-content;
 	&.show {
 		left: 0;
 		right: 0;

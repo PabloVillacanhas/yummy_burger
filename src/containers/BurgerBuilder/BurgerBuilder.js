@@ -9,6 +9,7 @@ import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
 import Load from 'components/UI/Load/Load'
 import Modal from 'components/UI/Modals/Modal'
 import OrderSummary from "components/OrderSummary/OrderSummary";
+import Success from 'components/UI/Success/Success'
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -25,7 +26,7 @@ const BurguerBuilder = (props) => {
 
   const [ingredients, setIngredients] = useState({});
 
-  const [loading, setloading] = useState(false)
+  const [requestStatus, setRequestStatus] = useState("none") //none, pending, success
 
   //After each render fetch ingredients
   useEffect(() => {
@@ -62,7 +63,7 @@ const BurguerBuilder = (props) => {
   }
 
   const onPurchase = () => {
-    setloading(true)
+    setRequestStatus("pending")
     const order = {
       ingredients: ingredients,
       price: total,
@@ -77,18 +78,46 @@ const BurguerBuilder = (props) => {
       }
     }
     BurgerAPI.post(order).then(res => {
-      setloading(false);
-      toggleShowModal();
+      setRequestStatus("success");
+      setTimeout(
+        () => {
+          toggleShowModal();
+          BurgerAPI.getIngredients().then(
+            data => setIngredients(data)
+          )
+          setTimeout(
+            () => {
+              setRequestStatus("none")
+              setTotal(0.00)
+            },
+            1000
+          )
+        }, 2000)
     }
     );
+  }
+
+  const changeState = requestStatus => {
+    switch (requestStatus) {
+      case 'none':
+        console.log("none");
+        return <OrderSummary totalPrice={total} ingredients={ingredients}></OrderSummary>
+      case 'pending':
+        console.log("pending");
+        return <Load />;
+      case 'success':
+        console.log("success");
+        return <Success />;
+      default:
+        return null;
+    }
   }
 
   return (
     <React.Fragment>
       <Modal purchase={onPurchase} ref={modal} className="modal">
-        {loading ?
-          <Load></Load> :
-          <OrderSummary totalPrice={total} ingredients={ingredients}></OrderSummary>
+        {
+          changeState(requestStatus)
         }
       </Modal>
       <Burger ingredients={ingredients}></Burger>

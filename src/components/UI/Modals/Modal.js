@@ -4,7 +4,7 @@ import React from 'react'
 const Modal = React.forwardRef((props, ref) => {
 
 	return (
-		<div id="modal" ref={ref} className="modal hide">
+		<div id="modal" ref={ref} className="modal show">
 			<div className="modalBody">
 				{props.children}
 			</div>
