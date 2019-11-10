@@ -9,6 +9,7 @@ import BurguerCockpit from 'components/BurgerCockpit/BurgerCockpit';
 import Checkout from 'containers/Checkout/Checkout'
 import Error from 'components/UI/Error/Error'
 import Load from 'components/UI/Load/Load'
+import Logo from "components/Logo/Logo";
 import Modal from 'components/UI/Modals/Modal'
 import OrderSummary from "components/OrderSummary/OrderSummary";
 import Success from 'components/UI/Success/Success'
